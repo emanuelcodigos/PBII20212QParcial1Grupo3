@@ -7,7 +7,7 @@ public class Materia {
 	private Integer codigoMateria;
 	private String horario;
 
-	public Materia(Titulo titulo, String descripcion, Integer codigoMateria, String horario) {
+	public Materia(NombreMateria titulo, String descripcion, Integer codigoMateria, String horario) {
 		super();
 		this.titulo = titulo;
 		this.descripcion = descripcion;
@@ -15,11 +15,11 @@ public class Materia {
 		this.horario = horario;
 	}
 
-	public Titulo getTitulo() {
+	public NombreMateria getTitulo() {
 		return titulo;
 	}
 
-	public void setTitulo(Titulo titulo) {
+	public void setTitulo(NombreMateria titulo) {
 		this.titulo = titulo;
 	}
 
