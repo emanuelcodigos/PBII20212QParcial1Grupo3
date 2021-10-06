@@ -1,0 +1,19 @@
+package ar.edu.unlam.PB2Examen;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class CursoTest {
+
+	@Test
+	public void queSeIngreseCorrectamenteUnAlumnoAlCurso() {
+		Telefono telefono=new Telefono(54,54,54);
+		Alumno alumno=new Alumno ("nombre","apellido",1,"mail",telefono);
+		Profesor profesor=new Profesor ("nombre","apellido",2,"mail",telefono,"titulo",5);
+		Curso curso=new Curso(profesor);
+		
+		assertTrue(curso.inscribirAlumnoACurso(alumno));
+	}
+
+}
