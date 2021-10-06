@@ -2,25 +2,25 @@ package ar.edu.unlam.PB2Examen;
 
 public class Materia {
 
-	private NombreMateria titulo;
+	private NombreMateria nombreMateria;
 	private String descripcion;
 	private Integer codigoMateria;
 	private String horario;
 
-	public Materia(NombreMateria titulo, String descripcion, Integer codigoMateria, String horario) {
+	public Materia(NombreMateria nombreMateria, String descripcion, Integer codigoMateria, String horario) {
 		super();
-		this.titulo = titulo;
+		this.nombreMateria = nombreMateria;
 		this.descripcion = descripcion;
 		this.codigoMateria = codigoMateria;
 		this.horario = horario;
 	}
 
 	public NombreMateria getTitulo() {
-		return titulo;
+		return nombreMateria;
 	}
 
-	public void setTitulo(NombreMateria titulo) {
-		this.titulo = titulo;
+	public void setTitulo(NombreMateria nombreMateria) {
+		this.nombreMateria = nombreMateria;
 	}
 
 	public String getDescripcion() {
