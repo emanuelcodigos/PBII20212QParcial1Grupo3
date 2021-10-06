@@ -28,11 +28,11 @@ public class Profesor extends Persona {
 		this.salario = salario;
 	}
 
-	public Materia getMateriaDictada() {
+	/*public Materia getMateriaDictada() {
 		return materiaDictada;
 	}
 
 	public void setMateriaDictada(Materia materiaDictada) {
 		this.materiaDictada = materiaDictada;
-	}
+	}*/
 }
