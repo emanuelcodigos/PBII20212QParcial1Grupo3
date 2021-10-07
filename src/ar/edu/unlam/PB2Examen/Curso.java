@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class Curso {
 	static private Integer codigo_curso=1;
-	static final private Integer CANTIDAD_MAXIMA_ALUMNOS=50;
-	static final private Integer CANTIDAD_MINIMA_ALUMNOS=10; 
+	static final private Integer CANTIDAD_MAXIMA_ALUMNOS=4;
+	static final private Integer CANTIDAD_MINIMA_ALUMNOS=1; 
 	
 	private Integer codigoCurso;
 	//private Date fechaIninicalCursada;
@@ -34,6 +34,7 @@ public class Curso {
 		boolean seInscribio=false;
 		for (int i = 0; i < alumnosDelCurso.length; i++) {
 			if(alumnosDelCurso[i]==null) {
+				alumnosDelCurso[i]=alumno;
 				seInscribio=true;
 				break;
 			}
@@ -41,8 +42,8 @@ public class Curso {
 		return seInscribio;
 	}
 	
-	public Integer cantidadAlumnosInscriptos() {
-		Integer cantidadDeAlumnosInscriptos=0;
+	public int cantidadAlumnosInscriptos() {
+		int cantidadDeAlumnosInscriptos=0;
 		for (int i = 0; i < alumnosDelCurso.length; i++) {
 			if(alumnosDelCurso[i]!=null)
 				cantidadDeAlumnosInscriptos++;
