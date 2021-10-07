@@ -13,11 +13,11 @@ public class Materia {
 		this.codigoMateria = codigoMateria;
 		this.horario = horario;
 	}
-	
+
 	public NombreMateria getTitulo() {
 		return nombreMateria;
 	}
-	
+
 	public void setTitulo(NombreMateria nombreMateria) {
 		this.nombreMateria = nombreMateria;
 	}

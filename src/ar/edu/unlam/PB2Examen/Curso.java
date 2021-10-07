@@ -3,56 +3,52 @@ package ar.edu.unlam.PB2Examen;
 import java.util.Date;
 
 public class Curso {
-	static private Integer codigo_curso=1;
-	static final private Integer CANTIDAD_MAXIMA_ALUMNOS=4;
-	static final private Integer CANTIDAD_MINIMA_ALUMNOS=1; 
-	
+
+
+	static private Integer codigo_curso = 1;
+	static final private Integer CANTIDAD_MAXIMA_ALUMNOS = 50;
+	static final private Integer CANTIDAD_MINIMA_ALUMNOS = 10;
+  
 	private Integer codigoCurso;
-	//private Date fechaIninicalCursada;
-	//private Date fechaFinalCursada;
 	private Materia materia;
 	private Profesor profesor;
 	private boolean estadoDelCurso;
-	private Alumno[] alumnosDelCurso=new Alumno[CANTIDAD_MAXIMA_ALUMNOS];
-	
-	public Curso(/*Date fechaInicio,Date fechaFin, */Profesor profesor,NombreMateria nombreMateria, String descripcion, Integer codigoMateria, String horario) {
-		//this.fechaFinalCursada=fechaFin;
-		//this.fechaIninicalCursada=fechaInicio;
-		this.codigoCurso=codigo_curso;
-		this.profesor=profesor;
-		this.materia=new Materia(nombreMateria,descripcion,codigoMateria,horario);
+	private Alumno[] alumnosDelCurso = new Alumno[CANTIDAD_MAXIMA_ALUMNOS];
+
+	public Curso(Profesor profesor, NombreMateria nombreMateria, String descripcion, Integer codigoMateria,
+			String horario) {
+		this.codigoCurso = codigo_curso;
+		this.profesor = profesor;
+		this.materia = new Materia(nombreMateria, descripcion, codigoMateria, horario);
 	}
-	public Curso(/*Date fechaInicio,Date fechaFin, */Profesor profesor,Materia materia) {
-		//this.fechaFinalCursada=fechaFin;
-		//this.fechaIninicalCursada=fechaInicio;
-		this.codigoCurso=codigo_curso;
-		this.profesor=profesor;
-		this.materia=materia;
-	}
-	
+
 	public boolean inscribirAlumnoACurso(Alumno alumno) {
-		boolean seInscribio=false;
+		boolean seInscribio = false;
 		for (int i = 0; i < alumnosDelCurso.length; i++) {
-			if(alumnosDelCurso[i]==null) {
-				alumnosDelCurso[i]=alumno;
-				seInscribio=true;
+
+			if (alumnosDelCurso[i] == null && alumnosDelCurso.length < CANTIDAD_MAXIMA_ALUMNOS) {
+				alumnosDelCurso[i] = alumno;
+				seInscribio = true;
 				break;
 			}
 		}
 		return seInscribio;
 	}
-	
-	public int cantidadAlumnosInscriptos() {
-		int cantidadDeAlumnosInscriptos=0;
+
+	public Integer cantidadAlumnosInscriptos() {
+		Integer cantidadDeAlumnosInscriptos = 0;
+
 		for (int i = 0; i < alumnosDelCurso.length; i++) {
-			if(alumnosDelCurso[i]!=null)
+			if (alumnosDelCurso[i] != null)
 				cantidadDeAlumnosInscriptos++;
-		}	
+		}
 		return cantidadDeAlumnosInscriptos;
 	}
+
 	public void iniciarCurso() {
-		this.estadoDelCurso=true;
+		this.estadoDelCurso = true;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -61,6 +57,7 @@ public class Curso {
 		result = prime * result + ((materia == null) ? 0 : materia.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -82,8 +79,5 @@ public class Curso {
 			return false;
 		return true;
 	}
-	
-}	
 
-
-	
+}

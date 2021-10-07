@@ -6,27 +6,23 @@ public class Calificacion {
 	private Double notaDos;
 	private Double notaTres;
 	private Double promedio;
-	private Alumno alumno;
+	private Materia materia;
 
-	public Calificacion(Alumno alumno) {
-		this.alumno = alumno;
+	public Calificacion(Materia materia) {
+		this.materia = materia; 
 		this.notaUno = 0.0;
 		this.notaUno = 0.0;
 		this.notaUno = 0.0;
 	}
 
-	public Calificacion(Double notaUno, Double notaDos, Double notaTres, Alumno alumno) {
-		this.alumno = alumno;
+	public Calificacion(Double notaUno, Double notaDos, Double notaTres, Materia materia) {
+		this.materia = materia; 
 		this.notaUno = notaUno;
 		this.notaDos = notaDos;
 		this.notaTres = notaTres;
 		calcularPromedio();
 	}
-	
-	public String ObtenerPromedioDelAlumno() {
-		return "El alumno " + alumno.getNombre() + " "+ alumno.getApellido() + " tiene como promedio " + getPromedio() + " y la materia que cursa se ecuentra en el estado " + obtenerEstado();
-	}
-	
+
 	public void calcularPromedio() {
 		promedio = (notaUno + notaDos + notaTres) / 3;
 	}
@@ -60,14 +56,14 @@ public class Calificacion {
 	}
 
 	public Boolean obtenerEstado() {
-		if(getPromedio()>= 7) {
+		if (getPromedio() >= 7) {
 			return true;
 		}
 		return false;
 	}
 
-	public Alumno getAlumno() {
-		return alumno;
+	public Materia getMateria() {
+		return materia;
 	}
 
 }

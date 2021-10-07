@@ -9,11 +9,11 @@ public class Pruebas {
 	@Test
 	public void queSePuedaCalcularElPromedioDeLasNotas() {
 	  Telefono nuevoTelefono = new Telefono(54, 011, 56325632);
-	  Alumno nuevoAlumno = new Alumno("Gabriel", "Angione", 38888888, "gabito@gmail.com", nuevoTelefono);
+	  Materia materia = new Materia(NombreMateria.ASTRONOMIA,"descripcion",1,"11:30");
 	  
 	  
 	  
-	  Calificacion nota = new Calificacion(nuevoAlumno);
+	  Calificacion nota = new Calificacion(materia);
 	  
 	  nota.setNotaUno(9.0);
 	  nota.setNotaDos(8.0);

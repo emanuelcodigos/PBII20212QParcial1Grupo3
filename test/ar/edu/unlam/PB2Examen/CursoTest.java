@@ -12,10 +12,11 @@ public class CursoTest {
 		Alumno alumno=new Alumno ("nombre","apellido",1,"mail",telefono);
 		Profesor profesor=new Profesor ("nombre","apellido",2,"mail",telefono,"titulo",5);
 		Materia materia=new Materia(NombreMateria.ASTRONOMIA,"descripcion",1,"11:30");
-		Curso curso=new Curso(profesor,materia);
+		Curso curso=new Curso(profesor,materia.getTitulo(), materia.getDescripcion(), materia.getCodigoMateria(), materia.getHorario());
 		
 		assertTrue(curso.inscribirAlumnoACurso(alumno));
 	}
+
 	@Test
 	public void contadorDeCantidadDeAlumnosInscriptos() {
 		Telefono telefono=new Telefono(54,54,54);
@@ -31,3 +32,4 @@ public class CursoTest {
 		assertTrue(CANTIDAD_ESPERADA==cantidad);
 	}
 }
+
