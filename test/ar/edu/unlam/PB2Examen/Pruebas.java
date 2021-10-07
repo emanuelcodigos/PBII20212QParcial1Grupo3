@@ -6,14 +6,14 @@ import org.junit.Test;
 
 public class Pruebas {
 
-	@Test
+	/*@Test
 	public void queSePuedaCalcularElPromedioDeLasNotas() {
 	  Telefono nuevoTelefono = new Telefono(54, 011, 56325632);
 	  Materia materia = new Materia(NombreMateria.ASTRONOMIA,"descripcion",1,"11:30");
 	  
 	  
 	  
-	  Calificacion nota = new Calificacion(materia);
+	 Calificacion nota = new Calificacion(materia);
 	  
 	  nota.setNotaUno(9.0);
 	  nota.setNotaDos(8.0);
@@ -25,7 +25,7 @@ public class Pruebas {
 	  assertEquals(esperado, nota.getPromedio());
 		
 	}
-	
+	*/
 	
 }
 

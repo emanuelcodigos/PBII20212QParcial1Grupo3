@@ -13,20 +13,23 @@ public class Curso {
 	private Materia materia;
 	private Profesor profesor;
 	private boolean estadoDelCurso;
-	private Alumno[] alumnosDelCurso = new Alumno[CANTIDAD_MAXIMA_ALUMNOS];
+	private Alumno[] alumnosDelCurso;
 
 	public Curso(Profesor profesor, NombreMateria nombreMateria, String descripcion, Integer codigoMateria,
 			String horario) {
 		this.codigoCurso = codigo_curso;
 		this.profesor = profesor;
 		this.materia = new Materia(nombreMateria, descripcion, codigoMateria, horario);
+		alumnosDelCurso = new Alumno[CANTIDAD_MAXIMA_ALUMNOS];
+		codigo_curso++;
+		
 	}
 
 	public boolean inscribirAlumnoACurso(Alumno alumno) {
 		boolean seInscribio = false;
 		for (int i = 0; i < alumnosDelCurso.length; i++) {
 
-			if (alumnosDelCurso[i] == null && alumnosDelCurso.length < CANTIDAD_MAXIMA_ALUMNOS) {
+			if (alumnosDelCurso[i] == null && alumnosDelCurso.length <= CANTIDAD_MAXIMA_ALUMNOS) {
 				alumnosDelCurso[i] = alumno;
 				seInscribio = true;
 				break;
@@ -35,6 +38,9 @@ public class Curso {
 		return seInscribio;
 	}
 
+	public Integer getCodigoDelCurso() {
+		return this.codigoCurso;
+	}
 	public Integer cantidadAlumnosInscriptos() {
 		Integer cantidadDeAlumnosInscriptos = 0;
 
@@ -49,6 +55,36 @@ public class Curso {
 		this.estadoDelCurso = true;
 	}
 
+	public Materia getMateria() {
+		return this.materia;
+	}
+	public Alumno[] getAlumnos() {
+		return this.alumnosDelCurso;
+	}
+	
+	public Alumno getAlumno(Integer IdAlumno) {
+		
+		for (int i= 0; i < alumnosDelCurso.length; i++) {
+			if(alumnosDelCurso[i] != null) {
+				if(alumnosDelCurso[i].getLegajo().equals(IdAlumno)) {
+					return alumnosDelCurso[i];
+				}
+			}
+		}
+		return null;
+	}
+    
+	public Alumno getAlumno(Alumno alumno) {
+		
+		for (int i= 0; i < alumnosDelCurso.length; i++) {
+			if(alumnosDelCurso[i] != null) {
+				if(alumnosDelCurso[i].equals(alumno)) {
+					return alumnosDelCurso[i];
+				}
+			}
+		}
+		return null;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -1,5 +1,7 @@
 package ar.edu.unlam.PB2Examen;
 
+import java.util.Arrays;
+
 public class Alumno extends Persona {
 	static private Integer numero_legajo=1;
 	//Existen 9 materias en el ENUM, por eso 9 maximas. 
@@ -43,8 +45,57 @@ public class Alumno extends Persona {
 	public Calificacion[] getCalificaciones() {
 		return calificaciones;
 	}
+	
+	public Calificacion getCalificacion(NombreMateria mat) {
 
-	public void agregarCalifacion(Calificacion calificacion) {
-		this.calificaciones[this.calificaciones.length] = calificacion;
+		for (int i = 0; i < calificaciones.length; i++) {
+			
+			if(calificaciones[i] != null) {
+				if(calificaciones[i].getMateria().equals(mat.toString())) {
+					return calificaciones[i];
+				}
+			}
+		}
+		return null;
+		
 	}
+
+	/*public void agregarCalifacion(Calificacion calificacion) {
+		this.calificaciones[this.calificaciones.length] = calificacion;
+	}*/
+	
+	public Boolean agregarCalificacion(Calificacion calificacion) {
+		
+		for (int i = 0; i < calificaciones.length; i++) {
+
+			if (calificaciones[i] == null && calificaciones.length <= CANTIDAD_MAXIMA_CALIFIACIONES) {
+				calificaciones[i] = calificacion;
+				return true;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public String toString() {
+		return "Alumno [legajo=" + legajo + ", estado=" + estado + ", inasistencias=" + inasistencias
+				+ ", calificaciones=" + Arrays.toString(calificaciones) + "]";
+	}
+	
+	
+	
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+

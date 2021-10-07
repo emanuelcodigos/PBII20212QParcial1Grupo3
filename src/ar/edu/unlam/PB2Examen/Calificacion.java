@@ -2,25 +2,35 @@ package ar.edu.unlam.PB2Examen;
 
 public class Calificacion {
 
+	static private Integer ID = 1;
+	
+	private Integer id;
 	private Double notaUno;
 	private Double notaDos;
 	private Double notaTres;
 	private Double promedio;
-	private Materia materia;
+	private NombreMateria materia;
 
-	public Calificacion(Materia materia) {
+	public Calificacion(NombreMateria materia) {
 		this.materia = materia; 
 		this.notaUno = 0.0;
-		this.notaUno = 0.0;
-		this.notaUno = 0.0;
+		this.notaDos = 0.0;
+		this.notaTres = 0.0;
+		this.id = ID;
+		ID++;
+		
 	}
 
-	public Calificacion(Double notaUno, Double notaDos, Double notaTres, Materia materia) {
+	public Calificacion(NombreMateria materia,Double notaUno, Double notaDos, Double notaTres) {
 		this.materia = materia; 
 		this.notaUno = notaUno;
 		this.notaDos = notaDos;
 		this.notaTres = notaTres;
 		calcularPromedio();
+	}
+	
+	public Integer getId() {
+		return id;
 	}
 
 	public void calcularPromedio() {
@@ -62,8 +72,8 @@ public class Calificacion {
 		return false;
 	}
 
-	public Materia getMateria() {
-		return materia;
+	public String getMateria() {
+		return materia.toString();
 	}
 
 }
