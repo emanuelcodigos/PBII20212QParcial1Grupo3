@@ -7,11 +7,14 @@ public class Calificacion {
 	private Double notaTres;
 	private Double promedio;
 	private Boolean estado;
+	private NombreMateria materia;
 	
-	public Calificacion() {
+	public Calificacion(NombreMateria materia) {
 		this.notaUno = 0.0;
 		this.notaUno = 0.0;
 		this.notaUno = 0.0;
+		this.materia = materia;
+		calcularPromedio();
 	}
 	
 	public Calificacion(Double notaUno, Double notaDos, Double notaTres) {
@@ -20,7 +23,6 @@ public class Calificacion {
 		this.notaTres = notaTres;
 		calcularPromedio();
 	}
-	
 	
 	public void calcularPromedio() {
 		promedio = (notaUno + notaDos + notaTres) / 3;
@@ -62,6 +64,4 @@ public class Calificacion {
 		this.estado = estado;
 	}
 	
-	
-
 }

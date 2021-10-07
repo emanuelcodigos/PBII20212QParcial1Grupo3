@@ -6,6 +6,7 @@ public class Materia {
 	private String descripcion;
 	private Integer codigoMateria;
 	private String horario;
+	
 
 	public Materia(NombreMateria nombreMateria, String descripcion, Integer codigoMateria, String horario) {
 		super();
