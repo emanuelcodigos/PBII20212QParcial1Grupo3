@@ -26,7 +26,7 @@ public class Curso {
 		boolean seInscribio = false;
 		for (int i = 0; i < alumnosDelCurso.length; i++) {
 
-			if (alumnosDelCurso[i] == null && alumnosDelCurso.length < CANTIDAD_MAXIMA_ALUMNOS) {
+			if (alumnosDelCurso[i] == null) {
 				alumnosDelCurso[i] = alumno;
 				seInscribio = true;
 				break;
