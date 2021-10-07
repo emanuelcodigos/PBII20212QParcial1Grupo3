@@ -15,12 +15,19 @@ public class Curso {
 	private boolean estadoDelCurso;
 	private Alumno[] alumnosDelCurso=new Alumno[CANTIDAD_MAXIMA_ALUMNOS];
 	
-	public Curso(/*Date fechaInicio,Date fechaFin, */Profesor profesor/*,NombreMateria nombreMateria, String descripcion, Integer codigoMateria, String horario*/) {
+	public Curso(/*Date fechaInicio,Date fechaFin, */Profesor profesor,NombreMateria nombreMateria, String descripcion, Integer codigoMateria, String horario) {
 		//this.fechaFinalCursada=fechaFin;
 		//this.fechaIninicalCursada=fechaInicio;
 		this.codigoCurso=codigo_curso;
 		this.profesor=profesor;
-		//this.materia=new Materia(nombreMateria,descripcion,codigoMateria,horario);
+		this.materia=new Materia(nombreMateria,descripcion,codigoMateria,horario);
+	}
+	public Curso(/*Date fechaInicio,Date fechaFin, */Profesor profesor,Materia materia) {
+		//this.fechaFinalCursada=fechaFin;
+		//this.fechaIninicalCursada=fechaInicio;
+		this.codigoCurso=codigo_curso;
+		this.profesor=profesor;
+		this.materia=materia;
 	}
 	
 	public boolean inscribirAlumnoACurso(Alumno alumno) {
