@@ -172,6 +172,17 @@ public class InterfazEscuela {
 		
 		Curso curso = miEscuela.buscarUnCurso(idCurso);
 		
+		if(curso != null) {
+			Alumno[] alumnos = curso.getAlumnos();
+			
+			for(int i = 0; i < alumnos.length; i++) {
+				if(alumnos[i] != null) {
+					System.out.println((i + 1) +": "+ alumnos[i].getNombre()+ " "+alumnos[i].getApellido());
+				}
+			}
+		}else {
+			System.out.println("No se encontro el curso buscado");
+		}
 		
 		
 	}
