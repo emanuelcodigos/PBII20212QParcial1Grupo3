@@ -1,26 +1,31 @@
 package ar.edu.unlam.PB2Examen;
 
 public class Calificacion {
-	
+
 	private Double notaUno;
 	private Double notaDos;
 	private Double notaTres;
 	private Double promedio;
-	private Boolean estado;
-	
-	public Calificacion() {
+	private Alumno alumno;
+
+	public Calificacion(Alumno alumno) {
+		this.alumno = alumno;
 		this.notaUno = 0.0;
 		this.notaUno = 0.0;
 		this.notaUno = 0.0;
 	}
-	
-	public Calificacion(Double notaUno, Double notaDos, Double notaTres) {
+
+	public Calificacion(Double notaUno, Double notaDos, Double notaTres, Alumno alumno) {
+		this.alumno = alumno;
 		this.notaUno = notaUno;
 		this.notaDos = notaDos;
 		this.notaTres = notaTres;
 		calcularPromedio();
 	}
 	
+	public String ObtenerPromedioDelAlumno() {
+		return "El alumno " + alumno.getNombre() + " "+ alumno.getApellido() + " tiene como promedio " + getPromedio() + " y la materia que cursa se ecuentra en el estado " + obtenerEstado();
+	}
 	
 	public void calcularPromedio() {
 		promedio = (notaUno + notaDos + notaTres) / 3;
@@ -54,14 +59,15 @@ public class Calificacion {
 		return promedio;
 	}
 
-	public Boolean getEstado() {
-		return estado;
+	public Boolean obtenerEstado() {
+		if(getPromedio()>= 7) {
+			return true;
+		}
+		return false;
 	}
 
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
+	public Alumno getAlumno() {
+		return alumno;
 	}
-	
-	
 
 }
