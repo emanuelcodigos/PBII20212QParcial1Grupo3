@@ -3,6 +3,7 @@ package ar.edu.unlam.PB2Examen;
 public class Profesor extends Persona {
 	private String titulo;
 	private Integer salario;
+	private Integer legajo;
 	//private Materia materiaDictada;
 	
 	public Profesor(String nombre,String apellido,Integer dni,String mail, Telefono telefono,String titulo,Integer salario/*,Materia materiaDictada*/) {
@@ -26,6 +27,14 @@ public class Profesor extends Persona {
 
 	public void setSalario(Integer salario) {
 		this.salario = salario;
+	}
+	
+	public Integer getLegajo() {
+		return legajo;
+	}
+
+	public void setLegajo(Integer legajo) {
+		this.legajo = legajo;
 	}
 
 	/*public Materia getMateriaDictada() {

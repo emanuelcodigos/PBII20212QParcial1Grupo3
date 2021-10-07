@@ -6,19 +6,25 @@ public class Materia {
 	private String descripcion;
 	private Integer codigoMateria;
 	private String horario;
+	private Profesor profesor; 
 
-	public Materia(NombreMateria nombreMateria, String descripcion, Integer codigoMateria, String horario) {
+	public Materia(NombreMateria nombreMateria, String descripcion, Integer codigoMateria, String horario, Profesor profesor) {
 		super();
 		this.nombreMateria = nombreMateria;
 		this.descripcion = descripcion;
 		this.codigoMateria = codigoMateria;
 		this.horario = horario;
+		this.profesor = profesor;
 	}
-
+	
 	public NombreMateria getTitulo() {
 		return nombreMateria;
 	}
-
+	
+	public Profesor getProfesor() {
+		return profesor;
+	}
+	
 	public void setTitulo(NombreMateria nombreMateria) {
 		this.nombreMateria = nombreMateria;
 	}
