@@ -4,10 +4,11 @@ import java.util.Date;
 
 public class Curso {
 
+
 	static private Integer codigo_curso = 1;
 	static final private Integer CANTIDAD_MAXIMA_ALUMNOS = 50;
 	static final private Integer CANTIDAD_MINIMA_ALUMNOS = 10;
-
+  
 	private Integer codigoCurso;
 	private Materia materia;
 	private Profesor profesor;
@@ -24,6 +25,7 @@ public class Curso {
 	public boolean inscribirAlumnoACurso(Alumno alumno) {
 		boolean seInscribio = false;
 		for (int i = 0; i < alumnosDelCurso.length; i++) {
+
 			if (alumnosDelCurso[i] == null && alumnosDelCurso.length < CANTIDAD_MAXIMA_ALUMNOS) {
 				alumnosDelCurso[i] = alumno;
 				seInscribio = true;
@@ -35,6 +37,7 @@ public class Curso {
 
 	public Integer cantidadAlumnosInscriptos() {
 		Integer cantidadDeAlumnosInscriptos = 0;
+
 		for (int i = 0; i < alumnosDelCurso.length; i++) {
 			if (alumnosDelCurso[i] != null)
 				cantidadDeAlumnosInscriptos++;

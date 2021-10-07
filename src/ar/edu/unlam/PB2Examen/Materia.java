@@ -8,7 +8,6 @@ public class Materia {
 	private String horario;
 
 	public Materia(NombreMateria nombreMateria, String descripcion, Integer codigoMateria, String horario) {
-		super();
 		this.nombreMateria = nombreMateria;
 		this.descripcion = descripcion;
 		this.codigoMateria = codigoMateria;
