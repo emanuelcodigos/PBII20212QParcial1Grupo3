@@ -30,7 +30,7 @@ public class Escuela {
 		for (int i = 0; i < cursos.length; i++) {
 
 			if (cursos[i] != null) {
-				if (cursos[i].getCodigoDelCurso().equals(codigoCurso)) {
+				if (cursos[i].getCodigoCurso().equals(codigoCurso)) {
 					return cursos[i];
 				}
 			}
@@ -148,7 +148,7 @@ public class Escuela {
 
 		for (int i = 0; i < cursos.length; i++) {
 
-			if (cursos[i] != null && cursos[i].getCodigoDelCurso().equals(idCurso)) {
+			if (cursos[i] != null && cursos[i].getCodigoCurso().equals(idCurso)) {
 
 				cursos[i].inscribirAlumnoACurso(alumno);
 				agregarAlArrayDeAlumnos(alumno);

@@ -34,8 +34,28 @@ public class Curso {
 		return seInscribio;
 	}
 
-	public Integer getCodigoDelCurso() {
+	public Integer getCodigoCurso() {
 		return this.codigoCurso;
+	}
+
+	public void setCodigoCurso(Integer codigoCurso) {
+		this.codigoCurso = codigoCurso;
+	}
+
+	public void setMateria(Materia materia) {
+		this.materia = materia;
+	}
+
+	public Materia getMateria() {
+		return this.materia;
+	}
+
+	public void setProfesor(Profesor profesor) {
+		this.profesor = profesor;
+	}
+	
+	public Profesor getProfesor() {
+		return this.profesor;
 	}
 
 	public Integer cantidadAlumnosInscriptos() {
@@ -46,14 +66,6 @@ public class Curso {
 				cantidadDeAlumnosInscriptos++;
 		}
 		return cantidadDeAlumnosInscriptos;
-	}
-
-	public Materia getMateria() {
-		return this.materia;
-	}
-
-	public Profesor getProfesor() {
-		return this.profesor;
 	}
 
 	public Alumno[] getAlumnos() {
@@ -105,8 +117,8 @@ public class Curso {
 
 	@Override
 	public String toString() {
-		return "Curso: codigoCurso=" + getCodigoDelCurso() + ", materia=" + getMateria() + ", profesor="
-				+ profesor.toString();
+		return "Curso: codigoCurso=" + getCodigoCurso() + ", materia=" + getMateria() + ", profesor="
+				+ getProfesor();
 	}
 
 }
