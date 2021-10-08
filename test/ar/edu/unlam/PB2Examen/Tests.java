@@ -151,17 +151,16 @@ public class Tests {
 		assertEquals(alumno, curso.getAlumno(dni));
  	}
 	
-/* 	@Test
+	@Test
 	public void queSePuedaObtenerLaInformacionDeUnCurso() {
 		Telefono telefono = new Telefono(54, 11, 12345678);
 		Profesor profesor = new Profesor("nombre", "apellido", 12345678, "mail", telefono, "titulo", 25000);
 		Curso curso = new Curso(profesor, NombreMateria.FISICA, "descripcion", 1, "horario");
 		
-		String valorEsperado = "Curso: codigoCurso=1234, materia=FISICA, profesor=profesor";
-		
+		String valorEsperado = "Curso: codigoCurso=" + curso.getCodigoCurso() + ", materia=" + curso.getMateria() + ", profesor="+ curso.getProfesor();
 		assertEquals(valorEsperado, curso.toString());
 	}
-*/
+
 	@Test
 	public void queSePuedaCrearUnaEscuela() {
 		Escuela escuela = new Escuela("nombre", 30);
@@ -190,7 +189,7 @@ public class Tests {
 		escuela.agregarCurso(curso);
 		curso.setCodigoCurso(codigoCurso);
 				
-		assertEquals(curso, escuela.buscarUnCurso(codigoCurso));
+		assertEquals(curso, escuela.buscarUnCursoPorCodigo(codigoCurso));
 	 }
 
 	@Test
@@ -202,24 +201,23 @@ public class Tests {
 		
 		escuela.agregarCurso(curso);
 				
-		assertEquals(curso, escuela.buscarUnCurso(NombreMateria.FISICA));
-	}
-/*	
+		assertEquals(curso, escuela.buscarUnCursoPorMateria(NombreMateria.FISICA));
+	}	
  	@Test
  	public void queSePuedaBuscarAlumnosPorCodigoDelCurso() {
-		Integer codigoCurso = 1234;
+		Integer codigoCurso = 1;
 		Escuela escuela = new Escuela("nombre", 30);
 		Telefono telefono = new Telefono(54, 11, 12345678);
 		Profesor profesor = new Profesor("nombre", "apellido", 12345678, "mail", telefono, "titulo", 25000);
-		Curso curso = new Curso(profesor, NombreMateria.FISICA, "descripcion", codigoCurso, "horario");
+		Curso cursoEsperado = new Curso(profesor, NombreMateria.FISICA, "descripcion", codigoCurso, "horario");
 		Alumno alumno = new Alumno("nombre", "apellido", 12345678, "mail", telefono);
 
-		escuela.agregarCurso(curso);
-		curso.inscribirAlumnoACurso(alumno);
+		escuela.agregarCurso(cursoEsperado);
+		
 
-		assertEquals(alumno, escuela.buscarUnCurso(codigoCurso));
+		assertTrue(escuela.agregarAlumnoAUnCurso(NombreMateria.FISICA, alumno));
 	}
-	
+
 	@Test
 	public void queSePuedaBuscarUnAlumnoPorDni() {
 		Integer dni = 12345678;
@@ -228,12 +226,9 @@ public class Tests {
 		Profesor profesor = new Profesor("nombre", "apellido", 12345678, "mail", telefono, "titulo", 25000);
 		Curso curso = new Curso(profesor, NombreMateria.FISICA, "descripcion", 1, "horario");
 		Alumno alumno = new Alumno("nombre", "apellido", dni, "mail", telefono);
-	
-		curso.inscribirAlumnoACurso(alumno);
+		escuela.agregarCurso(curso);
+		escuela.agregarAlumnoAUnCurso(NombreMateria.FISICA, alumno);
 	
 		assertEquals(alumno, escuela.buscarUnAlumnoPorDni(12345678));
 	}
-*/
-	
-	
 }
