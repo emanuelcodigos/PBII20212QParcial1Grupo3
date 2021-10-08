@@ -1,14 +1,11 @@
 package ar.edu.unlam.PB2Examen;
 
-import java.util.Date;
-
 public class Curso {
-
 
 	static private Integer codigo_curso = 1;
 	static final private Integer CANTIDAD_MAXIMA_ALUMNOS = 50;
 	static final private Integer CANTIDAD_MINIMA_ALUMNOS = 10;
-  
+
 	private Integer codigoCurso;
 	private Materia materia;
 	private Profesor profesor;
@@ -21,7 +18,7 @@ public class Curso {
 		this.materia = new Materia(nombreMateria, descripcion, codigoMateria, horario);
 		alumnosDelCurso = new Alumno[CANTIDAD_MAXIMA_ALUMNOS];
 		codigo_curso++;
-		
+
 	}
 
 	public boolean inscribirAlumnoACurso(Alumno alumno) {
@@ -40,6 +37,7 @@ public class Curso {
 	public Integer getCodigoDelCurso() {
 		return this.codigoCurso;
 	}
+
 	public Integer cantidadAlumnosInscriptos() {
 		Integer cantidadDeAlumnosInscriptos = 0;
 
@@ -50,27 +48,30 @@ public class Curso {
 		return cantidadDeAlumnosInscriptos;
 	}
 
-	
 	public Materia getMateria() {
 		return this.materia;
 	}
+
+	public Profesor getProfesor() {
+		return this.profesor;
+	}
+
 	public Alumno[] getAlumnos() {
 		return this.alumnosDelCurso;
 	}
-	
+
 	public Alumno getAlumno(Integer dni) {
-		
-		for (int i= 0; i < alumnosDelCurso.length; i++) {
-			if(alumnosDelCurso[i] != null) {
-				if(alumnosDelCurso[i].getDni() == dni) {
+
+		for (int i = 0; i < alumnosDelCurso.length; i++) {
+			if (alumnosDelCurso[i] != null) {
+				if (alumnosDelCurso[i].getDni() == dni) {
 					return alumnosDelCurso[i];
 				}
 			}
 		}
 		return null;
 	}
-    
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -104,7 +105,8 @@ public class Curso {
 
 	@Override
 	public String toString() {
-		return "Curso [codigoCurso=" + codigoCurso + ", materia=" + materia + ", profesor=" + profesor.toString() + "]";
+		return "Curso: codigoCurso=" + getCodigoDelCurso() + ", materia=" + getMateria() + ", profesor="
+				+ profesor.toString();
 	}
 
 }

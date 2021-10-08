@@ -3,24 +3,22 @@ package ar.edu.unlam.PB2Examen;
 public class Calificacion {
 
 	static private Integer ID = 1;
-	
+
 	private Integer id;
 	private Double notaUno;
 	private Double notaDos;
 	private Double notaTres;
 	private NombreMateria materia;
 
-
-	public Calificacion(NombreMateria materia,Double notaUno, Double notaDos, Double notaTres) {
-		this.materia = materia; 
+	public Calificacion(NombreMateria materia, Double notaUno, Double notaDos, Double notaTres) {
+		this.materia = materia;
 		this.notaUno = notaUno;
 		this.notaDos = notaDos;
 		this.notaTres = notaTres;
 		this.id = ID;
 		ID++;
-		
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -52,7 +50,6 @@ public class Calificacion {
 	public void setNotaTres(Double notaTres) {
 		this.notaTres = notaTres;
 	}
-
 
 	public Boolean obtenerEstado() {
 		if (calcularPromedio() >= 7) {

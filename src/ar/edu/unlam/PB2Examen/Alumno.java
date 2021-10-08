@@ -73,13 +73,13 @@ public class Alumno extends Persona {
 				return true;
 			}
 		}
-		return null;
+		return false;
 	}
 
 	@Override
 	public String toString() {
-		return "Alumno [getLegajo()=" + getLegajo() + ", getNombre()=" + getNombre() + ", getApellido()="
-				+ getApellido() + ", getDni()=" + getDni() + "]";
+		return "Alumno: legajo=" + getLegajo() + ", nombre=" + getNombre() + ", apellido="
+				+ getApellido() + ", dni=" + getDni();
 	}
 
 	@Override
