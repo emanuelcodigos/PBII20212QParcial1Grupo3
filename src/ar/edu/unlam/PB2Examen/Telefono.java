@@ -1,20 +1,20 @@
 package ar.edu.unlam.PB2Examen;
 
 public class Telefono {
-	
+
 	private Integer codPais;
 	private Integer codArea;
-	private Integer numero; 
-	
-    public Telefono(Integer codPais, Integer codArea, Integer numero) {
-    	this.codArea = codArea;
-    	this.codPais = codPais;
-    	this.numero = numero;
-    }
-    
-    public long getTelefono() {
-    	return codPais + codArea + numero;
-    }
+	private Integer numero;
+
+	public Telefono(Integer codPais, Integer codArea, Integer numero) {
+		this.codArea = codArea;
+		this.codPais = codPais;
+		this.numero = numero;
+	}
+
+	public long getTelefono() {
+		return codPais + codArea + numero;
+	}
 
 	public Integer getCodPais() {
 		return codPais;
@@ -42,9 +42,7 @@ public class Telefono {
 
 	@Override
 	public String toString() {
-		return codPais+ " - "+ codArea + " - " + numero;
+		return codPais + " - " + codArea + " - " + numero;
 	}
-    
-    
 
 }

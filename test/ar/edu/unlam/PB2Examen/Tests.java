@@ -5,7 +5,32 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class Tests {
-
+	
+	@Test
+	public void queSePuedaCrearUnTelefono() {
+		Integer codPais = 54;
+		Integer codArea = 11;
+		Integer numero = 12345678;
+		Telefono telefono = new Telefono(codPais, codArea, numero);
+		
+		String valorEsperado = "54 - 11 - 12345678";
+		
+		assertEquals(valorEsperado, telefono.toString());
+	}
+	
+	@Test
+	public void queSePuedaCrearUnaPersona() {
+		String nombre = "nombre";
+		String apellido = "apellido";
+		Integer dni = 12345678;
+		String mail = "mail";
+		Telefono telefono = new Telefono(54, 11, 12345678);
+		
+		Persona persona = new Persona(nombre, apellido, dni, mail, telefono);
+		
+		assertNotNull(persona);
+	}
+	
 	@Test
 	public void queSePuedaCrearUnAlumno() {
 		String nombre = "nombre";
@@ -19,6 +44,33 @@ public class Tests {
 		assertNotNull(alumno);
 	}
 
+	@Test
+	public void queSePuedaCrearUnProfesor() {
+		String nombre = "nombre";
+		String apellido = "apellido";
+		Integer dni = 12345678;
+		String mail = "mail";
+		Telefono telefono = new Telefono(54, 11, 12345678);
+		String titulo = "titulo";
+		Integer salario = 25000;
+		
+		Profesor profesor = new Profesor(nombre, apellido, dni, mail, telefono, titulo, salario);
+		
+		assertNotNull(profesor);
+	}
+	
+	@Test
+	public void queSePuedaCrearUnaMateria() {
+		NombreMateria Nombremateria = NombreMateria.FISICA;
+		String descripcion = "descripcion";
+		Integer codigoMateria = 1;
+		String horario = "horario";
+		
+		Materia materia = new Materia(Nombremateria, descripcion, codigoMateria, horario);
+			
+		assertNotNull(materia);
+	}
+	
 	@Test
 	public void queSePuedanCrearCalificaciones() {
 		Calificacion calificacion = new Calificacion(NombreMateria.FISICA, 8.0, 8.0, 8.0);
@@ -67,7 +119,23 @@ public class Tests {
 
 		assertEquals(valorEsperado, alumno.getCalificacion(NombreMateria.FISICA));
 	}
+/*	@Test
+	public void queSePuedaObtenerLaCalificacion() {
+		Escuela escuela = new Escuela("nombre", 30);
+		Telefono telefono = new Telefono(54, 11, 12345678);
+		Profesor profesor = new Profesor("nombre", "apellido", 12345678, "mail", telefono, "titulo", 25000);
+		Curso curso = new Curso(profesor, NombreMateria.FISICA, "descripcion", 1, "horario");
+		Alumno alumno = new Alumno("nombre", "apellido", 12345678, "mail", telefono);
+		Calificacion calificacion = new Calificacion(NombreMateria.FISICA, 8.0, 8.0, 8.0);
+		escuela.agregarCurso(curso);
+		escuela.agregarAlumnoAUnCurso(NombreMateria.FISICA, alumno);
+		escuela.agregarCalificacionAAlumnos(12345678, calificacion);
+		
+		Calificacion valorEsperado = calificacion;
 
+		assertEquals(valorEsperado, escuela.buscarUnAlumnoPorDni(12345678).getCalificacion(NombreMateria.FISICA));
+	}
+*/
 	@Test
 	public void queSePuedaObtenerLosDatosDelAlumno() {
 		Telefono telefono = new Telefono(54, 11, 12345678);
@@ -99,7 +167,7 @@ public class Tests {
 	public void queSePuedaObtenerLaMateriaSegunLasCalificaciones() {
 		Calificacion calificacion = new Calificacion(NombreMateria.FISICA, 8.0, 8.0, 8.0);
 
-		String valorEsperado = "FISICA";
+		NombreMateria valorEsperado = NombreMateria.FISICA;
 
 		assertEquals(valorEsperado, calificacion.getMateria());
 	}
@@ -158,6 +226,7 @@ public class Tests {
 		Curso curso = new Curso(profesor, NombreMateria.FISICA, "descripcion", 1, "horario");
 		
 		String valorEsperado = "Curso: codigoCurso=" + curso.getCodigoCurso() + ", materia=" + curso.getMateria() + ", profesor="+ curso.getProfesor();
+		
 		assertEquals(valorEsperado, curso.toString());
 	}
 
@@ -226,6 +295,7 @@ public class Tests {
 		Profesor profesor = new Profesor("nombre", "apellido", 12345678, "mail", telefono, "titulo", 25000);
 		Curso curso = new Curso(profesor, NombreMateria.FISICA, "descripcion", 1, "horario");
 		Alumno alumno = new Alumno("nombre", "apellido", dni, "mail", telefono);
+		
 		escuela.agregarCurso(curso);
 		escuela.agregarAlumnoAUnCurso(NombreMateria.FISICA, alumno);
 	
@@ -239,6 +309,7 @@ public class Tests {
 		Profesor profesor = new Profesor("nombre", "apellido", 12345678, "mail", telefono, "titulo", 25000);
 		Curso curso = new Curso(profesor, NombreMateria.FISICA, "descripcion", 1, "horario");
 		Alumno alumno = new Alumno("nombre", "apellido", 12345678, "mail", telefono);
+		//alumno.setLegajo(1);
 		Calificacion calificacion = new Calificacion(NombreMateria.FISICA, 8.0, 8.5, 9.0);
 		
 		escuela.agregarCurso(curso);
@@ -247,29 +318,35 @@ public class Tests {
 
 		assertTrue(escuela.calificarUnAlumno(12345678, NombreMateria.FISICA, 8.0, 8.5, 9.0));
 	}
-	/*
-	@Test
+/*	@Test
 	public void queSePuedaBuscarElMejorPromedioDeUnCurso() {
 		Escuela escuela = new Escuela("nombre", 30);
 		Telefono telefono = new Telefono(54, 11, 12345678);
 		Profesor profesor = new Profesor("nombre", "apellido", 12345678, "mail", telefono, "titulo", 25000);
 		Curso curso = new Curso(profesor, NombreMateria.FISICA, "descripcion", 1, "horario");
-		Alumno alumno1 = new Alumno("nombre", "apellido", 12345678, "mail", telefono);
+		Alumno alumno1 = new Alumno("nombre", "apellido", 12345679, "mail", telefono);
 		alumno1.setLegajo(1);
-		Alumno alumno2 = new Alumno("nombre", "apellido", 12345678, "mail", telefono);
+		Alumno alumno2 = new Alumno("nombre", "apellido", 12345671, "mail", telefono);
 		alumno2.setLegajo(2);
-		Calificacion calificacion1 = new Calificacion(NombreMateria.FISICA, 8.0, 8.5, 9.0);
-		Calificacion calificacion2 = new Calificacion(NombreMateria.FISICA, 7.0, 6.5, 8.0);
+		Alumno alumno3 = new Alumno("nombre", "apellido", 12345678, "mail", telefono);
+		alumno2.setLegajo(3);
+		Alumno alumno4 = new Alumno("nombre", "apellido", 12345673, "mail", telefono);
+		alumno2.setLegajo(4);
 
-		
 		escuela.agregarCurso(curso);
-		curso.inscribirAlumnoACurso(alumno1);
-		curso.inscribirAlumnoACurso(alumno2);
-		alumno1.agregarCalificacion(calificacion1);
-		alumno2.agregarCalificacion(calificacion2);
-
-		assertEquals(alumno2,escuela.buscarElMejorPromedioDeUnCurso());
+		escuela.agregarAlumnoAUnCurso(NombreMateria.FISICA, alumno1);
+		escuela.agregarAlumnoAUnCurso(NombreMateria.FISICA, alumno2);
+		escuela.agregarAlumnoAUnCurso(NombreMateria.FISICA, alumno3);
+		escuela.agregarAlumnoAUnCurso(NombreMateria.FISICA, alumno4);
+		escuela.calificarUnAlumno(1, NombreMateria.FISICA, 8.0, 8.5, 9.0);
+		escuela.calificarUnAlumno(2, NombreMateria.FISICA, 6.0, 5.5, 6.0);
+		escuela.calificarUnAlumno(3, NombreMateria.FISICA, 8.0, 9.5, 10.0);
+		escuela.calificarUnAlumno(4, NombreMateria.FISICA, 7.0, 7.5, 7.0);
+		
+		Alumno alumnoEsperado = escuela.buscarUnAlumnoPorDni(12345678);
+		
+		assertEquals(alumnoEsperado, escuela.buscarElMejorPromedioDeUnCurso());
 	}
-	*/
+*/
 
 }

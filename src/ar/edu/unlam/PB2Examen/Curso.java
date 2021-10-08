@@ -24,8 +24,7 @@ public class Curso {
 	public boolean inscribirAlumnoACurso(Alumno alumno) {
 		boolean seInscribio = false;
 		for (int i = 0; i < alumnosDelCurso.length; i++) {
-
-			if (alumnosDelCurso[i] == null && alumnosDelCurso.length <= CANTIDAD_MAXIMA_ALUMNOS) {
+			if (alumnosDelCurso[i] == null) {
 				alumnosDelCurso[i] = alumno;
 				seInscribio = true;
 				break;
@@ -53,14 +52,13 @@ public class Curso {
 	public void setProfesor(Profesor profesor) {
 		this.profesor = profesor;
 	}
-	
+
 	public Profesor getProfesor() {
 		return this.profesor;
 	}
 
 	public Integer cantidadAlumnosInscriptos() {
 		Integer cantidadDeAlumnosInscriptos = 0;
-
 		for (int i = 0; i < alumnosDelCurso.length; i++) {
 			if (alumnosDelCurso[i] != null)
 				cantidadDeAlumnosInscriptos++;
@@ -73,7 +71,6 @@ public class Curso {
 	}
 
 	public Alumno getAlumno(Integer dni) {
-
 		for (int i = 0; i < alumnosDelCurso.length; i++) {
 			if (alumnosDelCurso[i] != null) {
 				if (alumnosDelCurso[i].getDni() == dni) {
@@ -117,8 +114,7 @@ public class Curso {
 
 	@Override
 	public String toString() {
-		return "Curso: codigoCurso=" + getCodigoCurso() + ", materia=" + getMateria() + ", profesor="
-				+ getProfesor();
+		return "Curso: codigoCurso=" + getCodigoCurso() + ", materia=" + getMateria() + ", profesor=" + getProfesor();
 	}
 
 }

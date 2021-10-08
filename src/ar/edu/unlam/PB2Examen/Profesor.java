@@ -4,13 +4,12 @@ public class Profesor extends Persona {
 	private String titulo;
 	private Integer salario;
 	private Integer legajo;
-	//private Materia materiaDictada;
-	
-	public Profesor(String nombre,String apellido,Integer dni,String mail, Telefono telefono,String titulo,Integer salario/*,Materia materiaDictada*/) {
-		super(nombre,apellido,dni,mail,telefono);
-		this.titulo=titulo;
-		this.salario=salario;
-		//this.materiaDictada=materiaDictada;
+
+	public Profesor(String nombre, String apellido, Integer dni, String mail, Telefono telefono, String titulo,
+			Integer salario) {
+		super(nombre, apellido, dni, mail, telefono);
+		this.titulo = titulo;
+		this.salario = salario;
 	}
 
 	public String getTitulo() {
@@ -28,7 +27,7 @@ public class Profesor extends Persona {
 	public void setSalario(Integer salario) {
 		this.salario = salario;
 	}
-	
+
 	public Integer getLegajo() {
 		return legajo;
 	}
@@ -37,11 +36,4 @@ public class Profesor extends Persona {
 		this.legajo = legajo;
 	}
 
-	/*public Materia getMateriaDictada() {
-		return materiaDictada;
-	}
-
-	public void setMateriaDictada(Materia materiaDictada) {
-		this.materiaDictada = materiaDictada;
-	}*/
 }

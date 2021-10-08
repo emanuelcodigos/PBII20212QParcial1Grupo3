@@ -14,21 +14,17 @@ public class Escuela {
 	}
 
 	public Boolean agregarCurso(Curso curso) {
-
 		for (int i = 0; i < cursos.length; i++) {
 			if (cursos[i] == null) {
 				cursos[i] = curso;
 				return true;
 			}
 		}
-
 		return false;
 	}
 
 	public Curso buscarUnCursoPorCodigo(Integer codigoCurso) {
-
 		for (int i = 0; i < cursos.length; i++) {
-
 			if (cursos[i] != null) {
 				if (cursos[i].getCodigoCurso().equals(codigoCurso)) {
 					return cursos[i];
@@ -59,45 +55,42 @@ public class Escuela {
 	}
 
 	public Alumno[] buscarAlumnosPorCurso(Integer idCurso) {
-
 		Curso curso = buscarUnCursoPorCodigo(idCurso);
-
 		if (curso != null) {
 			return curso.getAlumnos();
 		}
-
 		return null;
 	}
 
 	public Alumno buscarUnAlumnoPorDni(Integer dni) {
-		Alumno alumno=null;
+		Alumno alumno = null;
 		for (int i = 0; i < alumnos.length; i++) {
 			if (alumnos[i] != null && alumnos[i].getDni().equals(dni)) {
-					alumno= alumnos[i];
-					break;
+				alumno = alumnos[i];
+				break;
 			}
 		}
 		return alumno;
 	}
-	public void agregarCalificacionAAlumnos(Integer idAlumno, Calificacion calificacion) {
+
+	public void agregarCalificacionAAlumnos(Integer dni, Calificacion calificacion) {
 		for (int i = 0; i < alumnos.length; i++) {
-			if(alumnos[i]!=null && alumnos[i].getLegajo().equals(idAlumno)) {
+			if (alumnos[i] != null && alumnos[i].getDni().equals(dni)) {
 				alumnos[i].agregarCalificacion(calificacion);
 			}
 		}
 	}
-	public Boolean calificarUnAlumno(Integer idAlumno, NombreMateria materia, Double notaUno, Double notaDos,Double notaTres) {
+
+	public Boolean calificarUnAlumno(Integer dni, NombreMateria materia, Double notaUno, Double notaDos,
+			Double notaTres) {
 		Boolean resultado = false;
 		for (int i = 0; i < cursos.length; i++) {
-
 			if (cursos[i] != null) {
-
 				for (int j = 0; j < cursos[i].getAlumnos().length; j++) {
-
-					if (cursos[i].getAlumnos()[j].getLegajo().equals(idAlumno)) {
-						Calificacion calif = new Calificacion(materia, notaUno, notaDos, notaTres);
-						cursos[i].getAlumnos()[j].agregarCalificacion(calif);
-						agregarCalificacionAAlumnos(idAlumno,calif);
+					if (cursos[i].getAlumnos()[j].getDni().equals(dni)) {
+						Calificacion calificacion = new Calificacion(materia, notaUno, notaDos, notaTres);
+						cursos[i].getAlumnos()[j].agregarCalificacion(calificacion);
+						agregarCalificacionAAlumnos(dni, calificacion);
 						resultado = true;
 						break;
 					}
@@ -105,19 +98,14 @@ public class Escuela {
 
 			}
 		}
-
 		return resultado;
 	}
-	
 
-	public Alumno buscarElMejorPromedioDeUnCurso() {
-
+/*	public Alumno buscarElMejorPromedioDeUnCurso() {
 		Alumno alumnoPromedio = null;
 		Double promedio = 0.0;
 		for (int i = 0; i < alumnos.length; i++) {
-
 			if (alumnos[i] != null) {
-
 				for (int j = 0; j < alumnos[i].getCalificaciones().length; j++) {
 					if (alumnos[i].getCalificaciones()[j] != null && alumnos[i].getCalificaciones()[j].calcularPromedio() > promedio) {
 						promedio = alumnos[i].getCalificaciones()[j].calcularPromedio();
@@ -126,37 +114,29 @@ public class Escuela {
 				}
 			}
 		}
-
 		return alumnoPromedio;
 	}
-
+*/
 	public Boolean agregarAlArrayDeAlumnos(Alumno alumno) {
 		for (int i = 0; i < alumnos.length; i++) {
-
 			if (alumnos[i] == null) {
 				alumnos[i] = alumno;
 				return true;
 			}
 		}
-
 		return false;
 	}
 
 	public Boolean agregarAlumnoAUnCurso(NombreMateria materia, Alumno alumno) {
-
 		Boolean respuesta = false;
-
 		for (int i = 0; i < cursos.length; i++) {
-
 			if (cursos[i] != null && cursos[i].getMateria().getTitulo().equals(materia)) {
-
 				cursos[i].inscribirAlumnoACurso(alumno);
 				agregarAlArrayDeAlumnos(alumno);
 				respuesta = true;
 				break;
 			}
 		}
-
 		return respuesta;
 	}
 

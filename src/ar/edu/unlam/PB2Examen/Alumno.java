@@ -1,19 +1,18 @@
 package ar.edu.unlam.PB2Examen;
 
-import java.util.Arrays;
-
 public class Alumno extends Persona {
-	static private Integer numero_legajo=1;
-	//Existen 9 materias en el ENUM, por eso 9 maximas. 
+
+	static private Integer numero_legajo = 1;
+	// Existen 9 materias en el ENUM, por eso 9 maximas.
 	static final private Integer CANTIDAD_MAXIMA_CALIFIACIONES = 9;
 	private Integer legajo;
 	private boolean estado;
 	private Integer inasistencias;
-	private Calificacion[] calificaciones;  
-	
-	public Alumno(String nombre,String apellido,Integer dni,String mail, Telefono telefono) {
-		super(nombre,apellido,dni,mail,telefono);
-		this.legajo=numero_legajo;	
+	private Calificacion[] calificaciones;
+
+	public Alumno(String nombre, String apellido, Integer dni, String mail, Telefono telefono) {
+		super(nombre, apellido, dni, mail, telefono);
+		this.legajo = numero_legajo;
 		this.calificaciones = new Calificacion[CANTIDAD_MAXIMA_CALIFIACIONES];
 		numero_legajo++;
 	}
@@ -45,26 +44,22 @@ public class Alumno extends Persona {
 	public Calificacion[] getCalificaciones() {
 		return calificaciones;
 	}
-	
-	public Calificacion getCalificacion(NombreMateria mat) {
 
+	public Calificacion getCalificacion(NombreMateria materia) {
 		for (int i = 0; i < calificaciones.length; i++) {
-			
-			if(calificaciones[i] != null) {
-				if(calificaciones[i].getMateria().equals(mat.toString())) {
+			if (calificaciones[i] != null) {
+				if (calificaciones[i].getMateria().equals(materia)) {
 					return calificaciones[i];
 				}
 			}
 		}
 		return null;
-		
-	}
-	
-	public Boolean agregarCalificacion(Calificacion calificacion) {
-		
-		for (int i = 0; i < calificaciones.length; i++) {
 
-			if (calificaciones[i] == null && calificaciones.length <= CANTIDAD_MAXIMA_CALIFIACIONES) {
+	}
+
+	public Boolean agregarCalificacion(Calificacion calificacion) {
+		for (int i = 0; i < calificaciones.length; i++) {
+			if (calificaciones[i] == null) {
 				calificaciones[i] = calificacion;
 				return true;
 			}
@@ -74,8 +69,8 @@ public class Alumno extends Persona {
 
 	@Override
 	public String toString() {
-		return "Alumno: legajo=" + getLegajo() + ", nombre=" + getNombre() + ", apellido="
-				+ getApellido() + ", dni=" + getDni();
+		return "Alumno: legajo=" + getLegajo() + ", nombre=" + getNombre() + ", apellido=" + getApellido() + ", dni="
+				+ getDni();
 	}
 
 	@Override
@@ -102,17 +97,5 @@ public class Alumno extends Persona {
 			return false;
 		return true;
 	}
-	
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
