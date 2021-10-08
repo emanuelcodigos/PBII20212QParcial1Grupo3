@@ -41,6 +41,7 @@ public class Tests {
 		Telefono telefono = new Telefono(54, 11, 12345678);
 		Alumno alumno = new Alumno("nombre", "apellido", 12345678, "mail", telefono);
 		Calificacion calificacion = new Calificacion(NombreMateria.FISICA, 8.0, 8.0, 8.0);
+	
 		alumno.agregarCalificacion(calificacion);
 		alumno.agregarCalificacion(calificacion);
 		alumno.agregarCalificacion(calificacion);
@@ -52,7 +53,6 @@ public class Tests {
 		alumno.agregarCalificacion(calificacion);
 
 		assertFalse(alumno.agregarCalificacion(calificacion));
-
 	}
 
 	@Test
@@ -60,6 +60,7 @@ public class Tests {
 		Telefono telefono = new Telefono(54, 11, 12345678);
 		Alumno alumno = new Alumno("nombre", "apellido", 12345678, "mail", telefono);
 		Calificacion calificacion = new Calificacion(NombreMateria.FISICA, 8.0, 8.0, 8.0);
+	
 		alumno.agregarCalificacion(calificacion);
 
 		Calificacion valorEsperado = calificacion;
@@ -92,7 +93,6 @@ public class Tests {
 		Calificacion calificacion = new Calificacion(NombreMateria.FISICA, 8.0, 8.0, 8.0);
 
 		assertTrue(calificacion.obtenerEstado());
-
 	}
 
 	@Test
@@ -231,4 +231,46 @@ public class Tests {
 	
 		assertEquals(alumno, escuela.buscarUnAlumnoPorDni(12345678));
 	}
+
+*/
+	@Test
+	public void queSePuedaCalificarUnAlumno() {
+		Escuela escuela = new Escuela("nombre", 30);
+		Telefono telefono = new Telefono(54, 11, 12345678);
+		Profesor profesor = new Profesor("nombre", "apellido", 12345678, "mail", telefono, "titulo", 25000);
+		Curso curso = new Curso(profesor, NombreMateria.FISICA, "descripcion", 1, "horario");
+		Alumno alumno = new Alumno("nombre", "apellido", 12345678, "mail", telefono);
+		Calificacion calificacion = new Calificacion(NombreMateria.FISICA, 8.0, 8.5, 9.0);
+		
+		escuela.agregarCurso(curso);
+		curso.inscribirAlumnoACurso(alumno);
+		alumno.agregarCalificacion(calificacion);
+
+		assertTrue(escuela.calificarUnAlumno(12345678, NombreMateria.FISICA, 8.0, 8.5, 9.0));
+	}
+	/*
+	@Test
+	public void queSePuedaBuscarElMejorPromedioDeUnCurso() {
+		Escuela escuela = new Escuela("nombre", 30);
+		Telefono telefono = new Telefono(54, 11, 12345678);
+		Profesor profesor = new Profesor("nombre", "apellido", 12345678, "mail", telefono, "titulo", 25000);
+		Curso curso = new Curso(profesor, NombreMateria.FISICA, "descripcion", 1, "horario");
+		Alumno alumno1 = new Alumno("nombre", "apellido", 12345678, "mail", telefono);
+		alumno1.setLegajo(1);
+		Alumno alumno2 = new Alumno("nombre", "apellido", 12345678, "mail", telefono);
+		alumno2.setLegajo(2);
+		Calificacion calificacion1 = new Calificacion(NombreMateria.FISICA, 8.0, 8.5, 9.0);
+		Calificacion calificacion2 = new Calificacion(NombreMateria.FISICA, 7.0, 6.5, 8.0);
+
+		
+		escuela.agregarCurso(curso);
+		curso.inscribirAlumnoACurso(alumno1);
+		curso.inscribirAlumnoACurso(alumno2);
+		alumno1.agregarCalificacion(calificacion1);
+		alumno2.agregarCalificacion(calificacion2);
+
+		assertEquals(alumno2,escuela.buscarElMejorPromedioDeUnCurso());
+	}
+	*/
+
 }
