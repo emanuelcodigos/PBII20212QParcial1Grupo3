@@ -25,7 +25,7 @@ public class Escuela {
 		return false;
 	}
 
-	public Curso buscarUnCurso(Integer codigoCurso) {
+	public Curso buscarUnCursoPorCodigo(Integer codigoCurso) {
 
 		for (int i = 0; i < cursos.length; i++) {
 
@@ -38,7 +38,7 @@ public class Escuela {
 		return null;
 	}
 
-	public Curso buscarUnCurso(NombreMateria materia) {
+	public Curso buscarUnCursoPorMateria(NombreMateria materia) {
 		for (int i = 0; i < cursos.length; i++) {
 			if (cursos[i] != null) {
 				if (cursos[i].getMateria().getTitulo().equals(materia)) {
@@ -60,7 +60,7 @@ public class Escuela {
 
 	public Alumno[] buscarAlumnosPorCurso(Integer idCurso) {
 
-		Curso curso = buscarUnCurso(idCurso);
+		Curso curso = buscarUnCursoPorCodigo(idCurso);
 
 		if (curso != null) {
 			return curso.getAlumnos();
@@ -70,23 +70,23 @@ public class Escuela {
 	}
 
 	public Alumno buscarUnAlumnoPorDni(Integer dni) {
-
-		for (int i = 0; i < cursos.length; i++) {
-
-			if (cursos[i] != null) {
-				if (cursos[i].getAlumno(dni) != null) {
-					return cursos[i].getAlumno(dni);
-				}
-
+		Alumno alumno=null;
+		for (int i = 0; i < alumnos.length; i++) {
+			if (alumnos[i] != null && alumnos[i].getDni().equals(dni)) {
+					alumno= alumnos[i];
+					break;
 			}
 		}
-
-		return null;
+		return alumno;
 	}
-
-	public Boolean calificarUnAlumno(Integer idAlumno, NombreMateria materia, Double notaUno, Double notaDos,
-			Double notaTres) {
-
+	public void agregarCalificacionAAlumnos(Integer idAlumno, Calificacion calificacion) {
+		for (int i = 0; i < alumnos.length; i++) {
+			if(alumnos[i]!=null && alumnos[i].getLegajo().equals(idAlumno)) {
+				alumnos[i].agregarCalificacion(calificacion);
+			}
+		}
+	}
+	public Boolean calificarUnAlumno(Integer idAlumno, NombreMateria materia, Double notaUno, Double notaDos,Double notaTres) {
 		Boolean resultado = false;
 		for (int i = 0; i < cursos.length; i++) {
 
@@ -97,6 +97,7 @@ public class Escuela {
 					if (cursos[i].getAlumnos()[j].getLegajo().equals(idAlumno)) {
 						Calificacion calif = new Calificacion(materia, notaUno, notaDos, notaTres);
 						cursos[i].getAlumnos()[j].agregarCalificacion(calif);
+						agregarCalificacionAAlumnos(idAlumno,calif);
 						resultado = true;
 						break;
 					}
@@ -107,6 +108,7 @@ public class Escuela {
 
 		return resultado;
 	}
+	
 
 	public Alumno buscarElMejorPromedioDeUnCurso() {
 
@@ -117,9 +119,7 @@ public class Escuela {
 			if (alumnos[i] != null) {
 
 				for (int j = 0; j < alumnos[i].getCalificaciones().length; j++) {
-					if (alumnos[i].getCalificaciones()[j] != null
-							&& alumnos[i].getCalificaciones()[j].calcularPromedio() > promedio) {
-
+					if (alumnos[i].getCalificaciones()[j] != null && alumnos[i].getCalificaciones()[j].calcularPromedio() > promedio) {
 						promedio = alumnos[i].getCalificaciones()[j].calcularPromedio();
 						alumnoPromedio = alumnos[i];
 					}
@@ -142,13 +142,13 @@ public class Escuela {
 		return false;
 	}
 
-	public Boolean agregarAlumnoAUnCurso(Integer idCurso, Alumno alumno) {
+	public Boolean agregarAlumnoAUnCurso(NombreMateria materia, Alumno alumno) {
 
 		Boolean respuesta = false;
 
 		for (int i = 0; i < cursos.length; i++) {
 
-			if (cursos[i] != null && cursos[i].getCodigoCurso().equals(idCurso)) {
+			if (cursos[i] != null && cursos[i].getMateria().getTitulo().equals(materia)) {
 
 				cursos[i].inscribirAlumnoACurso(alumno);
 				agregarAlArrayDeAlumnos(alumno);
