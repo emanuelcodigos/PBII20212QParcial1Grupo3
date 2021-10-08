@@ -8,33 +8,25 @@ public class Calificacion {
 	private Double notaUno;
 	private Double notaDos;
 	private Double notaTres;
-	private Double promedio;
 	private NombreMateria materia;
 
-	public Calificacion(NombreMateria materia) {
-		this.materia = materia; 
-		this.notaUno = 0.0;
-		this.notaDos = 0.0;
-		this.notaTres = 0.0;
-		this.id = ID;
-		ID++;
-		
-	}
 
 	public Calificacion(NombreMateria materia,Double notaUno, Double notaDos, Double notaTres) {
 		this.materia = materia; 
 		this.notaUno = notaUno;
 		this.notaDos = notaDos;
 		this.notaTres = notaTres;
-		calcularPromedio();
+		this.id = ID;
+		ID++;
+		
 	}
 	
 	public Integer getId() {
 		return id;
 	}
 
-	public void calcularPromedio() {
-		promedio = (notaUno + notaDos + notaTres) / 3;
+	public Double calcularPromedio() {
+		return (notaUno + notaDos + notaTres) / 3;
 	}
 
 	public Double getNotaUno() {
@@ -61,12 +53,9 @@ public class Calificacion {
 		this.notaTres = notaTres;
 	}
 
-	public Double getPromedio() {
-		return promedio;
-	}
 
 	public Boolean obtenerEstado() {
-		if (getPromedio() >= 7) {
+		if (calcularPromedio() >= 7) {
 			return true;
 		}
 		return false;

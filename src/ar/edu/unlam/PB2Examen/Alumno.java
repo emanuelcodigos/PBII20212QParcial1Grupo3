@@ -78,9 +78,38 @@ public class Alumno extends Persona {
 
 	@Override
 	public String toString() {
-		return "Alumno [legajo=" + legajo + ", estado=" + estado + ", inasistencias=" + inasistencias
-				+ ", calificaciones=" + Arrays.toString(calificaciones) + "]";
+		return "Alumno [getLegajo()=" + getLegajo() + ", getNombre()=" + getNombre() + ", getApellido()="
+				+ getApellido() + ", getDni()=" + getDni() + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((legajo == null) ? 0 : legajo.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Alumno other = (Alumno) obj;
+		if (legajo == null) {
+			if (other.legajo != null)
+				return false;
+		} else if (!legajo.equals(other.legajo))
+			return false;
+		return true;
+	}
+	
+	
+
+	
 	
 	
 	

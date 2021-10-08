@@ -46,4 +46,32 @@ public class Materia {
 		this.horario = horario;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codigoMateria == null) ? 0 : codigoMateria.hashCode());
+		result = prime * result + ((nombreMateria == null) ? 0 : nombreMateria.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Materia other = (Materia) obj;
+		if (codigoMateria == null) {
+			if (other.codigoMateria != null)
+				return false;
+		} else if (!codigoMateria.equals(other.codigoMateria))
+			return false;
+		if (nombreMateria != other.nombreMateria)
+			return false;
+		return true;
+	}
+
 }

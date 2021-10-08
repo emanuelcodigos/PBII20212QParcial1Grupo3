@@ -12,7 +12,6 @@ public class Curso {
 	private Integer codigoCurso;
 	private Materia materia;
 	private Profesor profesor;
-	private boolean estadoDelCurso;
 	private Alumno[] alumnosDelCurso;
 
 	public Curso(Profesor profesor, NombreMateria nombreMateria, String descripcion, Integer codigoMateria,
@@ -51,10 +50,7 @@ public class Curso {
 		return cantidadDeAlumnosInscriptos;
 	}
 
-	public void iniciarCurso() {
-		this.estadoDelCurso = true;
-	}
-
+	
 	public Materia getMateria() {
 		return this.materia;
 	}
@@ -62,11 +58,11 @@ public class Curso {
 		return this.alumnosDelCurso;
 	}
 	
-	public Alumno getAlumno(Integer IdAlumno) {
+	public Alumno getAlumno(Integer dni) {
 		
 		for (int i= 0; i < alumnosDelCurso.length; i++) {
 			if(alumnosDelCurso[i] != null) {
-				if(alumnosDelCurso[i].getLegajo().equals(IdAlumno)) {
+				if(alumnosDelCurso[i].getDni() == dni) {
 					return alumnosDelCurso[i];
 				}
 			}
@@ -74,17 +70,7 @@ public class Curso {
 		return null;
 	}
     
-	public Alumno getAlumno(Alumno alumno) {
-		
-		for (int i= 0; i < alumnosDelCurso.length; i++) {
-			if(alumnosDelCurso[i] != null) {
-				if(alumnosDelCurso[i].equals(alumno)) {
-					return alumnosDelCurso[i];
-				}
-			}
-		}
-		return null;
-	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -114,6 +100,11 @@ public class Curso {
 		} else if (!materia.equals(other.materia))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Curso [codigoCurso=" + codigoCurso + ", materia=" + materia + ", profesor=" + profesor.toString() + "]";
 	}
 
 }
