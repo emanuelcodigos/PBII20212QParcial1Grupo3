@@ -59,10 +59,6 @@ public class Alumno extends Persona {
 		return null;
 		
 	}
-
-	/*public void agregarCalifacion(Calificacion calificacion) {
-		this.calificaciones[this.calificaciones.length] = calificacion;
-	}*/
 	
 	public Boolean agregarCalificacion(Calificacion calificacion) {
 		
@@ -106,14 +102,6 @@ public class Alumno extends Persona {
 			return false;
 		return true;
 	}
-	
-	
-
-	
-	
-	
-	
-	
 	
 }
 
