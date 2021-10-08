@@ -232,7 +232,6 @@ public class Tests {
 		assertEquals(alumno, escuela.buscarUnAlumnoPorDni(12345678));
 	}
 
-*/
 	@Test
 	public void queSePuedaCalificarUnAlumno() {
 		Escuela escuela = new Escuela("nombre", 30);
